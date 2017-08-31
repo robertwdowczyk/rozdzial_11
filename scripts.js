@@ -1,16 +1,18 @@
-﻿function Phone(brand, price, color) {
-    this.brand = brand;
-    this.price = price;
-    this.color = color;
+﻿function Button(text) {
+    this.text = text || 'Hello';
 }
-Phone.prototype.printInfo = function() {
-        console.log("The phone brand is " + this.brand + ", color is " + this.color + " and the price is " + this.price + ".");
+Button.prototype = {
+    create: function() {
+    var self = this;
+    this.$element = $('<button>');
+    this.$element.text(this.text);
+    this.$element.click(function() {
+      alert(self.text);
+      
+      });
+    $('body').append(this.$element);
+  }
 }
-var iPhone6S = new Phone ("Apple", 2250, "silver");
-iPhone6S.printInfo();
 
-var SamsungGalaxyX6 = new Phone ("Samsung", 2500, "white");
-SamsungGalaxyX6.printInfo();
-
-var OnePlusOne = new Phone ("One", 2100, "black");
-OnePlusOne.printInfo();
+var btn1 = new Button('Hello!');
+btn1.create();
